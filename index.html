@@ -1,13 +1,10 @@
-Exit code: 0
-Wall time: 1.9 seconds
-Output:
 <!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>拾页 · 公开学习笔记</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/katex.min.css">
+  <link rel="stylesheet" href="./vendor/katex/katex.min.css">
   <style>
     :root { --ink:#20221d; --muted:#73766d; --paper:#f5f1e8; --card:#fffdf7; --line:#ddd7ca; --accent:#35695a; --accent2:#d86b43; }
     *{box-sizing:border-box} body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -33,10 +30,10 @@ Output:
   </aside>
   <main id="main"></main>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/contrib/auto-render.min.js"></script>
+<script src="./vendor/marked.umd.js"></script>
+<script src="./vendor/purify.min.js"></script>
+<script src="./vendor/katex/katex.min.js"></script>
+<script src="./vendor/katex/auto-render.min.js"></script>
 <script>
 const PUBLIC_NOTES=[{id:'welcome-note',title:'如何建立有效的学习循环',date:'2026-08-08',tags:['学习方法','复习','AI'],body:`# 如何建立有效的学习循环
 
@@ -66,10 +63,8 @@ function renderList(){const q=$('#search').value.toLowerCase();const found=notes
 function show(id){selected=id;const n=notes.find(x=>x.id===id);if(!n)return;$('#main').innerHTML=`<header class="hero"><div><h2>${esc(n.title)}</h2><div class="meta">${esc(n.date)}</div><div class="tags">${n.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></div></header><article>${md(n.body)}</article>`;if(typeof renderMathInElement==='function')renderMathInElement($('#main article'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});renderList()}
 function welcome(){if(notes.length){show(notes[0].id);return}$('#main').innerHTML=`<section class="welcome"><div class="meta">LOCAL-FIRST NOTES</div><h2>把知识留在自己的书桌上。</h2><p>导入 Markdown 文件，建立一个无需账号、无需服务器的私人学习空间。</p><div class="steps"><div class="step"><b>01 · 准备</b>让 AI 输出带标题和标签的 Markdown。</div><div class="step"><b>02 · 导入</b>选择一个或多个 .md 文件。</div><div class="step"><b>03 · 备份</b>定期导出 JSON，避免清理浏览器数据时丢失。</div></div></section>`}
 $('#search').oninput=renderList;
-function loadScript(src){return new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=src;script.onload=resolve;script.onerror=reject;document.head.appendChild(script)})}
-async function ensureMathRenderer(){if(typeof renderMathInElement==='function')return;const css=document.createElement('link');css.rel='stylesheet';css.href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.22/katex.min.css';document.head.appendChild(css);await loadScript('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.22/katex.min.js');await loadScript('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.22/contrib/auto-render.min.js')}
+async function ensureMathRenderer(){if(typeof renderMathInElement!=='function')throw new Error('本地 KaTeX 未加载')}
 async function loadPublishedNotes(){try{await ensureMathRenderer()}catch(error){console.warn('数学公式渲染器加载失败',error)}try{const manifest=await fetch('./notes/index.json').then(r=>{if(!r.ok)throw new Error('manifest');return r.json()});notes=await Promise.all(manifest.map(async item=>{const raw=await fetch('./'+item.path).then(r=>{if(!r.ok)throw new Error(item.path);return r.text()});const note=parse(raw,item.path.split('/').pop());note.id=item.path;return note}))}catch(error){console.warn('使用内置示例笔记',error);notes=PUBLIC_NOTES}renderList();welcome()}
 loadPublishedNotes();
 </script>
 </body></html>
-
