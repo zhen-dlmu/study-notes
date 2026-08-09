@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>拾页 · 公开学习笔记</title>
+<title>研究笔记 · Research Notes</title>
 <style>
-:root{--ink:#20221d;--muted:#73766d;--paper:#f5f1e8;--card:#fffdf7;--line:#ddd7ca;--accent:#35695a}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
-.wrap{max-width:920px;margin:auto;padding:58px 28px 90px}.brand{font:700 34px/1.1 Georgia,"Noto Serif SC",serif;margin:0}.sub{color:var(--muted);margin:9px 0 42px}
-.note{display:block;color:inherit;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.15s ease}.note:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 8px 24px #2f463413}
-.note h2{font:700 25px/1.35 Georgia,"Noto Serif SC",serif;margin:0 0 9px}.meta{color:var(--muted);font-size:14px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.tag{background:#e4ded0;border-radius:99px;padding:2px 9px;font-size:12px}
-.hint{margin-top:28px;color:var(--muted);font-size:13px}@media(max-width:700px){.wrap{padding:34px 18px 60px}}
+:root{--ink:#172033;--muted:#667085;--paper:#f7f8fa;--card:#fff;--line:#d8dde6;--navy:#183b66;--soft:#edf2f7}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.72 "Noto Serif SC","Songti SC","STSong",Georgia,serif}
+header{background:#fff;border-bottom:1px solid var(--line)}.masthead{max-width:1000px;margin:auto;padding:42px 30px 32px}.eyebrow{color:var(--navy);font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase}.masthead h1{font-size:36px;line-height:1.25;margin:9px 0 8px;font-weight:700}.subtitle{color:var(--muted);font-size:15px}
+main{max-width:1000px;margin:auto;padding:42px 30px 90px}.section-title{font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:0}
+.note{display:grid;grid-template-columns:1fr auto;gap:24px;color:inherit;text-decoration:none;background:var(--card);border-bottom:1px solid var(--line);padding:28px 4px}.note:hover h2{color:var(--navy)}.note h2{font-size:24px;line-height:1.45;margin:0 0 9px;transition:.15s}.abstract{color:#475467;margin:0 0 13px;max-width:720px;font-size:15px}.meta{color:var(--muted);font:13px/1.5 system-ui,sans-serif}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.tag{background:var(--soft);color:#344054;border-radius:3px;padding:3px 8px;font:12px/1.4 system-ui,sans-serif}.arrow{color:var(--navy);font-size:22px;padding-top:4px}
+@media(max-width:700px){.masthead,main{padding-left:20px;padding-right:20px}.masthead h1{font-size:30px}.note{grid-template-columns:1fr}.arrow{display:none}}
 </style>
 </head>
-<body><main class="wrap"><h1 class="brand">拾页</h1><div class="sub">我的公开学习笔记</div>
-<a class="note" href="./notes/mandi-2024-dfl-review.html"><h2>Decision-Focused Learning 综述阅读笔记</h2><div class="meta">2026-08-08</div><div class="tags"><span class="tag">DFL</span><span class="tag">论文阅读</span><span class="tag">运筹优化</span><span class="tag">机器学习</span></div></a>
-<div class="hint">笔记已在发布时预生成，打开时不再现场解析 Markdown 和公式。</div>
-</main></body></html>
+<body>
+<header><div class="masthead"><div class="eyebrow">Research Notes Archive</div><h1>研究与学习笔记</h1><div class="subtitle">论文阅读、方法梳理与研究问题记录</div></div></header>
+<main><div class="section-title">文献综述与方法笔记</div>
+<a class="note" href="./notes/mandi-2024-dfl-review.html"><div><h2>Decision-Focused Learning：从预测到决策的端到端学习综述笔记</h2><p class="abstract">围绕 decision-focused learning 的问题设定、可微优化、梯度估计方法与实验评价展开的结构化综述。</p><div class="meta">2026-08-08</div><div class="tags"><span class="tag">Decision-Focused Learning</span><span class="tag">Predict-then-Optimize</span><span class="tag">Optimization</span></div></div><div class="arrow">→</div></a>
+</main>
+</body></html>
