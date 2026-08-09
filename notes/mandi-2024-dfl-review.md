@@ -4,10 +4,6 @@ date: 2026-08-08
 tags: [DFL, 论文阅读, 运筹优化, 机器学习]
 ai_generated: true
 ---
-
-Exit code: 0
-Wall time: 0.9 seconds
-Output:
 # Decision-Focused Learning 综述阅读笔记
 
 > 阅读对象：Mandi et al. (2024), *Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities* [1]  
